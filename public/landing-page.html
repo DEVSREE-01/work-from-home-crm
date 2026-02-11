@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work From Home Opportunity - Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px 30px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .features {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 14px;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-error {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="formSection">
+            <div class="header">
+                <div class="logo">💼</div>
+                <h1>Work From Home</h1>
+                <p class="subtitle">Please enter your details. We'll call you shortly with complete information.</p>
+            </div>
+
+            <div class="alert alert-error" id="alertBox"></div>
+
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Enter your full name"
+                        required
+                    >
+                    <span class="error-message" id="nameError">Please enter your name</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="Enter your 10-digit mobile number"
+                        pattern="[0-9]{10}"
+                        required
+                    >
+                    <span class="error-message" id="phoneError">Please enter a valid 10-digit phone number</span>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit Details
+                </button>
+            </form>
+
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Mobile based work - No special equipment needed</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>No experience required</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Performance-based income</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="successSection" class="success-message">
+            <div class="success-icon">✓</div>
+            <h1 style="color: #11998e; margin-bottom: 15px;">Registration Successful!</h1>
+            <p class="subtitle">Thank you for your interest. Our team will contact you shortly with complete details about this opportunity.</p>
+            <p style="margin-top: 20px; color: #999; font-size: 14px;">Please keep your phone nearby.</p>
+        </div>
+    </div>
+
+    <script>
+        // API endpoint (change this to your server URL when deployed)
+        const API_URL = window.location.origin;
+
+        const form = document.getElementById('registrationForm');
+        const nameInput = document.getElementById('name');
+        const phoneInput = document.getElementById('phone');
+        const submitBtn = document.getElementById('submitBtn');
+        const formSection = document.getElementById('formSection');
+        const successSection = document.getElementById('successSection');
+        const alertBox = document.getElementById('alertBox');
+
+        // Show alert message
+        function showAlert(message, type = 'error') {
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type} show`;
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 5000);
+        }
+
+        // Phone number formatting
+        phoneInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+        });
+
+        // Form submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            document.getElementById('nameError').classList.remove('show');
+            document.getElementById('phoneError').classList.remove('show');
+            alertBox.classList.remove('show');
+            
+            let isValid = true;
+
+            // Validate name
+            if (nameInput.value.trim().length < 2) {
+                document.getElementById('nameError').classList.add('show');
+                isValid = false;
+            }
+
+            // Validate phone
+            if (phoneInput.value.length !== 10) {
+                document.getElementById('phoneError').classList.add('show');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+
+                try {
+                    // Send data to backend
+                    const response = await fetch(`${API_URL}/api/register`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: nameInput.value.trim(),
+                            phone: phoneInput.value
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Show success message
+                        formSection.style.display = 'none';
+                        successSection.classList.add('show');
+                    } else {
+                        // Show error message
+                        showAlert(data.message || 'Registration failed. Please try again.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit Details';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showAlert('Network error. Please check your connection and try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Details';
+                }
+            }
+        });
+
+        // Real-time validation feedback
+        nameInput.addEventListener('blur', function() {
+            if (this.value.trim().length < 2) {
+                document.getElementById('nameError').classList.add('show');
+            } else {
+                document.getElementById('nameError').classList.remove('show');
+            }
+        });
+
+        phoneInput.addEventListener('blur', function() {
+            if (this.value.length !== 10) {
+                document.getElementById('phoneError').classList.add('show');
+            } else {
+                document.getElementById('phoneError').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
