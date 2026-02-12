@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work From Home Opportunity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backgroundVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .subtitle {
+            color: white;
+            font-size: 24px;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.8);
+            animation: none;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .features {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: slideIn 1.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .emoji {
+            font-size: 28px;
+            margin-right: 8px;
+        }
+
+        /* Fallback for when video doesn't load */
+        .video-fallback {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 20px;
+            }
+
+            .features {
+                gap: 15px;
+            }
+
+            .feature {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+        }
+
+        /* Sound control */
+        .sound-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .sound-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .sound-icon {
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <!-- Fallback background -->
+        <div class="video-fallback"></div>
+
+        <!-- Video Background -->
+        <!-- Replace 'your-video.mp4' with your actual video file -->
+        <video id="backgroundVideo" autoplay loop muted playsinline>
+            <source src="https://cdn.pixabay.com/video/2023/05/18/163072-828068997_large.mp4" type="video/mp4">
+            <!-- This is a sample video. Replace with your own video showing two people talking about work -->
+        </video>
+
+        <!-- Overlay Content -->
+        <div class="overlay">
+            <div class="content">
+                <h1>🏠 Work From Home Opportunity!</h1>
+                <p class="subtitle">Start earning from the comfort of your home</p>
+
+                <!-- Main CTA Button - Change href to your registration page URL -->
+                <a href="https://work-from-home-crm.onrender.com" class="cta-button">
+                    <span>📱 Register Now - FREE!</span>
+                </a>
+
+                <div class="features">
+                    <div class="feature">
+                        <span class="emoji">💼</span>
+                        Mobile Based Work
+                    </div>
+                    <div class="feature">
+                        <span class="emoji">🎓</span>
+                        No Experience Required
+                    </div>
+                    <div class="feature">
+                        <span class="emoji">📈</span>
+                        Performance Based Income
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sound Control Button -->
+        <div class="sound-control" onclick="toggleSound()">
+            <span class="sound-icon" id="soundIcon">🔇</span>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('backgroundVideo');
+        const soundIcon = document.getElementById('soundIcon');
+        let isMuted = true;
+
+        // Toggle sound
+        function toggleSound() {
+            isMuted = !isMuted;
+            video.muted = isMuted;
+            soundIcon.textContent = isMuted ? '🔇' : '🔊';
+        }
+
+        // Auto-restart video after 5 seconds (optional)
+        video.addEventListener('loadedmetadata', function() {
+            // If you want exactly 5 seconds, you can set video duration
+            // video.currentTime = 0;
+            // setTimeout(() => {
+            //     video.currentTime = 0;
+            // }, 5000);
+        });
+
+        // Ensure video plays on mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            video.play().catch(function(error) {
+                console.log('Auto-play prevented:', error);
+            });
+        });
+
+        // Track button clicks (optional analytics)
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            console.log('Registration button clicked');
+            // You can add analytics tracking here
+        });
+    </script>
+</body>
+</html>
